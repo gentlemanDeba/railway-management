@@ -1,0 +1,40 @@
+-- Create the Railway_Records database
+CREATE DATABASE IF NOT EXISTS Railway_Records;
+USE Railway_Records;
+
+CREATE TABLE IF NOT EXISTS train_details (
+    train_number INT PRIMARY KEY,
+    train_name VARCHAR(100),
+    seats_available INT
+);
+
+CREATE TABLE IF NOT EXISTS bookings (
+    passenger_name VARCHAR(100),
+    train_number INT,
+    FOREIGN KEY (train_number) REFERENCES train_details(train_number)
+);
+
+INSERT INTO train_details (train_number, train_name, seats_available) VALUES
+(101, 'Express A', 100),
+(102, 'Express B', 200),
+(103, 'Express C', 150),
+(104, 'Express D', 120),
+(105, 'Express E', 180),
+(106, 'Express F', 90),
+(107, 'Express G', 110),
+(108, 'Express H', 160),
+(109, 'Express I', 130),
+(110, 'Express J', 140);
+
+INSERT INTO bookings (passenger_name, train_number) VALUES
+('John Doe', 101),
+('Jane Smith', 102),
+('Alice Johnson', 103),
+('Bob Brown', 104),
+('Charlie Davis', 105),
+('Diana Evans', 106),
+('Evan Foster', 107),
+('Fiona Green', 108),
+('George Harris', 109),
+('Hannah Ingram', 110);
+
